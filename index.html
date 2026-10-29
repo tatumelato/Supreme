@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Supreme Finance – Generator &amp; Alarm Inspection System</title>
+<meta name="theme-color" content="#d8232a">
+<meta name="mobile-web-app-capable" content="yes">
+<script>try{document.documentElement.dataset.theme=localStorage.sf_theme||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light')}catch(e){}</script>
+<style>
+:root{--red:#d8232a;--bg:#f4f4f5;--card:#fff;--tx:#111;--mu:#5f5f66;--bd:#dedee2;--sh:0 1px 3px rgba(0,0,0,.08);--r:14px;--ok:#16794a;--wa:#a65b00}
+[data-theme=dark]{--red:#ec3b41;--bg:#0b0b0c;--card:#18181a;--tx:#f4f4f5;--mu:#a3a3aa;--bd:#2c2c30;--sh:0 1px 3px rgba(0,0,0,.6);--ok:#4ade80;--wa:#fbbf24}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;font:15px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--tx);transition:background .3s,color .3s}
+body *{transition:background-color .3s,border-color .3s}
+button,input,select,textarea{font:inherit;color:inherit}
+h1{font-size:22px;margin:4px 0 14px}h2{font-size:16px;margin:20px 0 8px}
+.mu{color:var(--mu)}.sp{flex:1}.vh{position:absolute;opacity:0;width:1px;height:1px;overflow:hidden}
+:focus-visible,.btn:focus-within{outline:3px solid var(--red);outline-offset:2px}
+.hd{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:10px;padding:8px 14px;padding-top:max(8px,env(safe-area-inset-top));background:var(--card);border-bottom:1px solid var(--bd)}
+.lgw{background:#fff;border-radius:10px;padding:2px 8px;display:inline-flex}.lgw img{height:40px;width:auto;display:block}
+.ib{width:44px;height:44px;border-radius:50%;border:1px solid var(--bd);background:var(--card);display:grid;place-items:center;cursor:pointer}
+.btn{min-height:44px;padding:0 16px;border-radius:12px;border:1px solid var(--bd);background:var(--card);cursor:pointer;display:inline-flex;align-items:center;gap:8px;justify-content:center;font-weight:600;position:relative;transition:transform .1s}
+.btn:active{transform:scale(.97)}.btn:disabled{opacity:.5}.pri{background:var(--red);border-color:var(--red);color:#fff}.dan{color:var(--red);border-color:var(--red)}.sm{min-height:38px;padding:0 12px;font-size:13px}
+nav{position:fixed;bottom:0;left:0;right:0;z-index:20;display:flex;background:var(--card);border-top:1px solid var(--bd);padding-bottom:env(safe-area-inset-bottom)}
+nav button{flex:1;border:0;background:none;padding:8px 2px;font-size:11px;display:flex;flex-direction:column;align-items:center;gap:2px;color:var(--mu);cursor:pointer;min-height:58px}
+nav button.on{color:var(--red);font-weight:700}
+main{padding:16px 14px 100px;max-width:960px;margin:0 auto;outline:0;animation:in .3s both}
+@media(min-width:900px){nav{top:66px;bottom:0;right:auto;width:210px;flex-direction:column;border-top:0;border-right:1px solid var(--bd);padding:12px;gap:4px}nav button{flex:none;flex-direction:row;font-size:14px;gap:12px;padding:0 14px;border-radius:10px;justify-content:flex-start;min-height:46px}nav button.on{background:rgba(216,35,42,.1)}main{margin:0 auto 0 230px;padding-bottom:30px}}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);box-shadow:var(--sh);padding:16px;margin-bottom:12px;animation:in .35s both}
+.g{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+.stat b{font-size:30px;display:block;line-height:1.1}.stat span{color:var(--mu);font-size:13px}
+.stat.r{border-left:4px solid var(--red)}
+label{display:block;font-size:13px;font-weight:600;margin-bottom:4px}.rq{color:var(--red)}
+.in{width:100%;min-height:44px;padding:8px 12px;border-radius:10px;border:1px solid var(--bd);background:var(--bg)}
+textarea.in{resize:vertical}.in.err{border-color:var(--red);box-shadow:0 0 0 2px rgba(216,35,42,.25)}
+.er{color:var(--red);font-size:12px;display:block;min-height:0}
+.badge{display:inline-block;padding:1px 10px;border-radius:99px;font-size:12px;font-weight:700;border:1px solid currentColor;vertical-align:middle}
+.Passed{color:var(--ok)}.Failed{color:var(--red)}.Pending{color:var(--wa)}.Draft{color:var(--mu)}
+.row{cursor:pointer;display:flex;gap:10px;align-items:center;justify-content:space-between}.row:hover{border-color:var(--red)}
+.note{border-left:4px solid var(--red);background:rgba(216,35,42,.07);padding:10px 12px;border-radius:8px;margin-bottom:12px;font-size:13px}
+.it.f{border-color:var(--red);background:rgba(216,35,42,.06)}
+.sg{display:flex;gap:6px;margin:8px 0}.sg button{flex:1;min-height:44px;border-radius:10px;border:1px solid var(--bd);background:var(--card);font-weight:700;cursor:pointer}
+.sg .on{color:#fff;border-color:transparent}.sg .on[data-s=P]{background:#16794a}.sg .on[data-s=F]{background:#d8232a}.sg .on[data-s=N]{background:#555}
+.th{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}.th div{position:relative}
+.th img{width:74px;height:74px;object-fit:cover;border-radius:10px;border:1px solid var(--bd);cursor:pointer;animation:in .25s}
+.th button{position:absolute;top:-8px;right:-8px;width:28px;height:28px;border-radius:50%;border:0;background:var(--red);color:#fff;cursor:pointer;font-size:16px}
+.ov{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.6);display:grid;place-items:center;padding:14px;animation:fd .2s}.ov.out{opacity:0;transition:opacity .15s}
+.md{background:var(--card);border-radius:16px;max-width:760px;width:100%;max-height:92vh;display:flex;flex-direction:column;padding:18px;animation:pop .25s;outline:0}
+.md h2{margin:0 0 10px}.mb{overflow:auto;flex:1}.mf{display:flex;gap:8px;justify-content:flex-end;margin-top:14px;flex-wrap:wrap}
+.big{max-width:100%;max-height:70vh;display:block;margin:auto;border-radius:8px}
+.dev{font-size:22px;font-weight:800;text-align:center;padding:26px 8px;letter-spacing:.5px}
+.okc{width:72px;height:72px;margin:0 auto 10px;color:#fff;background:var(--ok);border-radius:50%;display:grid;place-items:center}.okc path{stroke-dasharray:30;animation:dr .6s .2s both}
+#toasts{position:fixed;left:0;right:0;bottom:78px;z-index:90;display:flex;flex-direction:column;align-items:center;gap:8px;pointer-events:none}
+.toast{background:#111;color:#fff;padding:10px 16px;border-radius:12px;border-left:4px solid #16794a;animation:pop .25s;max-width:92vw}.toast.err{border-color:var(--red)}
+.pr{height:6px;border-radius:3px;background:var(--bd);overflow:hidden}.pr i{display:block;height:100%;background:var(--red);transition:width .3s}
+.tm{font:700 34px ui-monospace,monospace;text-align:center;padding:6px}
+#intro{position:fixed;inset:0;z-index:100;background:#0a0a0a;color:#fff;display:grid;place-items:center;text-align:center;transition:opacity .6s;overflow:hidden}
+#intro .glow{position:absolute;inset:-20%;background:radial-gradient(circle at 25% 30%,rgba(216,35,42,.4),transparent 40%),radial-gradient(circle at 75% 70%,rgba(216,35,42,.28),transparent 40%);animation:gl 7s ease-in-out infinite alternate}
+#intro .ic{position:relative;padding:20px;width:min(520px,100%)}#intro .lgw{animation:lg 1s both}#intro .lgw img{height:110px}
+#intro h1{font-size:clamp(24px,6vw,38px);letter-spacing:3px;margin:22px 0 6px}#intro h2{font-size:clamp(11px,2.8vw,14px);letter-spacing:2px;color:#ccc;margin:0 0 16px}#intro p{color:#ff7b80;min-height:24px;margin:0 0 20px}
+#intro .pr{width:70%;margin:0 auto 18px;background:#333}#intro .pr i{width:0;animation:pg 3.3s .2s linear forwards}
+#skip{background:none;border:1px solid #555;color:#ccc;border-radius:10px;padding:8px 18px;cursor:pointer}
+.ch{opacity:0;display:inline-block;white-space:pre;animation:fd .3s forwards}
+@keyframes in{from{opacity:0;transform:translateY(8px)}}@keyframes fd{to{opacity:1}}@keyframes pop{from{opacity:0;transform:scale(.94)}}@keyframes dr{from{stroke-dashoffset:30}to{stroke-dashoffset:0}}
+@keyframes gl{to{transform:translate(4%,3%) scale(1.15)}}@keyframes lg{from{opacity:0;transform:scale(.8)}}@keyframes pg{to{width:100%}}
+.rp{background:#fff;color:#111;font:12px/1.4 Arial,sans-serif}.rp h1{font-size:20px;margin:0 0 4px}.rp h2{font-size:14px;border-bottom:2px solid #d8232a;padding-bottom:3px;margin:16px 0 6px;break-after:avoid;color:#111}
+.rp table{width:100%;border-collapse:collapse}.rp td,.rp th{border:1px solid #ccc;padding:4px 6px;text-align:left;vertical-align:top}.rp tr{break-inside:avoid}
+.rp .ph{display:grid;grid-template-columns:1fr 1fr;gap:8px}.rp figure{margin:0;break-inside:avoid}.rp figure img{width:100%;max-height:85mm;object-fit:contain;background:#f3f3f3;border:1px solid #ccc;display:block}.rp figcaption{font-size:10px;color:#444}
+.rp .sF{color:#d8232a;font-weight:700}.rp .sP{color:#16794a;font-weight:700}.rp .hdr{display:flex;justify-content:space-between;align-items:center;border-bottom:4px solid #d8232a;padding-bottom:8px}.rp .hdr img{height:60px}.rp .ft{margin-top:16px;font-size:10px;color:#555;border-top:1px solid #ccc;padding-top:6px}
+#pr{display:none}
+@media print{@page{size:A4;margin:14mm 12mm 16mm;@bottom-center{content:"Supreme Finance - Page " counter(page) " of " counter(pages);font:9px Arial;color:#555}}body>*:not(#pr){display:none!important}#pr{display:block}body{background:#fff}.rp{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important}}
+</style></head>
+<body>
+<div id="intro" aria-label="Introduction"><div class="glow"></div><div class="ic"><div class="lgw"><img data-logo alt="Supreme Finance logo"></div><h1 id="t1" aria-label="SUPREME FINANCE"></h1><h2 id="t2" aria-label="GENERATOR &amp; ALARM INSPECTION SYSTEM"></h2><p id="t3" aria-label="Inspect. Record. Verify. Protect."></p><div class="pr"><i></i></div><button id="skip">Skip introduction</button></div></div>
+<div id="app" hidden>
+<header class="hd"><span class="lgw"><img data-logo alt="Supreme Finance"></span><div class="sp"></div><button class="btn pri sm" data-a="inst" id="inst" hidden></button><button class="ib" data-a="thm" id="thm" aria-label="Toggle light and dark theme"></button></header>
+<nav id="nav" aria-label="Primary"></nav>
+<main id="main" tabindex="-1"></main>
+</div>
+<div id="toasts" aria-live="polite"></div>
+<div id="pr"></div>
+<noscript>This application requires JavaScript.</noscript>
+<script>
+(()=>{'use strict';
+const LOGO='data:image/png;base64,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';
+/* ---------- CONFIG (administrators: edit checklist items & types here) ---------- */
+const CFG={
+gen:{pre:'GEN',name:'Generator Testing',items:['General external condition','Enclosure and physical damage','Fuel level','Fuel leaks','Engine oil level','Coolant level (where applicable)','Battery condition and connections','Visible wiring and connections','Warning lights and alarms','Control panel condition','Starting and running test','Abnormal noise or vibration','Visible exhaust abnormalities','Output readings (where applicable)','Automatic changeover / ATS operation (where applicable)','General cleanliness and accessibility','Emergency stop and safety equipment (where applicable)','Overall operational condition']},
+alarm:{pre:'ALM',name:'Alarm Testing',items:['Alarm activation initiated','Audible alarm functioning','Alarm signal received or acknowledged (where applicable)','Correct branch / system identified','Alarm duration recorded','OB CODE received and verified','Any abnormal behaviour observed (mark Fail if abnormal)','Post-test system status checked']}};
+const OBI=5,ITYPES=['Routine','Monthly','Post-service','Fault follow-up','Other'];
+const FL={gen:[['branch','Branch / location','text',1],['asset','Generator ID / asset number','text',1],['date','Inspection date','date',1],['time','Inspection time','time',1],['insp','Inspector name','text',1],['model','Make / model','text'],['serial','Serial number','text'],['hours','Operating hours','number'],['itype','Inspection type','sel',1]],
+alarm:[['branch','Branch / location','text',1],['zone','Alarm system ID / zone','text'],['date','Inspection date','date',1],['time','Inspection time','time',1],['insp','Inspector','text',1],['ob','OB CODE (received after alarm test)','text']]};
+/* ---------- UTIL ---------- */
+const $=(s,e=document)=>e.querySelector(s),$$=(s,e=document)=>[...e.querySelectorAll(s)];
+const h=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const I={home:'<path d="M3 11l9-8 9 8v10H3z"/><path d="M9 21v-7h6v7"/>',gen:'<path d="M13 2L3 14h9l-1 8 10-12h-9z"/>',alarm:'<path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/>',hist:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',set:'<path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/>',sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',moon:'<path d="M21 13A9 9 0 1 1 11 3a7 7 0 0 0 10 10z"/>',cam:'<path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/>',dl:'<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>',pt:'<path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/>',plus:'<path d="M12 5v14M5 12h14"/>',back:'<path d="M15 18l-6-6 6-6"/>',ck:'<path d="M5 13l4 4L19 7"/>',img:'<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/>',eye:'<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"/><circle cx="12" cy="12" r="3"/>'};
+const ic=(n,z=20)=>`<svg viewBox="0 0 24 24" width="${z}" height="${z}" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${I[n]}</svg>`;
+const uid=()=>crypto.randomUUID?crypto.randomUUID():Date.now().toString(36)+Math.random().toString(36).slice(2);
+const today=()=>new Date().toLocaleDateString('en-CA'),nowT=()=>new Date().toTimeString().slice(0,5);
+const fmt=i=>i?new Date(i).toLocaleString():'—';
+const mmss=s=>{s=Math.floor(s);return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')};
+const toast=(m,t='')=>{const e=document.createElement('div');e.className='toast '+t;e.textContent=m;$('#toasts').append(e);setTimeout(()=>e.remove(),3800)};
+const dl=(b,n)=>{const u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download=n;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),5000)};
+const modal=(title,body,btns=[['Close','']])=>new Promise(res=>{const o=document.createElement('div');o.className='ov';
+o.innerHTML=`<div class="md" role="dialog" aria-modal="true" aria-label="${h(title)}" tabindex="-1"><h2>${h(title)}</h2><div class="mb">${body}</div><div class="mf">${btns.map((b,i)=>`<button class="btn ${b[1]}" data-k="${i}">${b[0]}</button>`).join('')}</div></div>`;
+const prev=document.activeElement;modal.el=o;
+const end=k=>{document.removeEventListener('keydown',kd);o.classList.add('out');setTimeout(()=>{o.remove();prev&&prev.focus&&prev.focus()},160);res(k)};
+const kd=e=>{if(e.key==='Escape')end(-1)};document.addEventListener('keydown',kd);
+o.onclick=e=>{const b=e.target.closest('[data-k]');if(b)end(+b.dataset.k);else if(e.target===o)end(-1)};
+document.body.append(o);(o.querySelector('.btn:last-child')||o.querySelector('.md')).focus()});
+/* ---------- INDEXEDDB ---------- */
+let db;
+const openDB=()=>new Promise((res,rej)=>{const r=indexedDB.open('supreme-finance',1);
+r.onupgradeneeded=()=>{const d=r.result;if(!d.objectStoreNames.contains('inspections')){const s=d.createObjectStore('inspections',{keyPath:'id'});s.createIndex('type','type');s.createIndex('status','status');s.createIndex('ref','ref')}
+if(!d.objectStoreNames.contains('photos'))d.createObjectStore('photos',{keyPath:'id'}).createIndex('insp','insp');if(!d.objectStoreNames.contains('appSettings'))d.createObjectStore('appSettings',{keyPath:'k'})};
+r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error);r.onblocked=()=>rej(new Error('Database upgrade blocked. Close other tabs.'))});
+const rq=r=>new Promise((a,b)=>{r.onsuccess=()=>a(r.result);r.onerror=()=>b(r.error)});
+const tx=(n,m='readonly')=>db.transaction(n,m);
+const st=(n,m)=>tx(n,m).objectStore(n);
+const put=(n,v)=>rq(st(n,'readwrite').put(v)),all=n=>rq(st(n).getAll()),get=(n,k)=>rq(st(n).get(k));
+const photosOf=id=>rq(st('photos').index('insp').getAll(id));
+const delPhotos=async id=>{const l=await rq(st('photos').index('insp').getAllKeys(id));const s=st('photos','readwrite');l.forEach(k=>s.delete(k));await new Promise(r=>s.transaction.oncomplete=r)};
+/* ---------- STATE ---------- */
+const S={view:'dash',cur:null,dirty:false,busy:0,urls:[],f:{}},main=$('#main'),act={};
+let dp=null;
+const calc=r=>{r.faults=Object.values(r.items).filter(x=>x.s==='F').length;r.result=r.faults?'Failed':(r.type==='alarm'&&!(r.d.ob||'').trim()?'Pending Verification':'Passed')};
+const bd=r=>{const s=r.status==='draft'?'Draft':r.result;return`<span class="badge ${s.split(' ')[0]}">${s}</span>`};
+const row=r=>`<div class="card row" role="button" tabindex="0" data-a="${r.status==='draft'?'res':'open'}" data-id="${r.id}"><div><b>${h(r.ref||'Unsubmitted draft')}</b> ${bd(r)}<div class="mu">${CFG[r.type].name} · ${h(r.d.branch||'No branch')} · ${h(r.d.insp||'—')}</div><div class="mu">${h(r.d.date||'')} ${h(r.d.time||'')} · ${r.faults||0} fault(s) · ${r.pc||0} photo(s)</div></div>${r.status==='draft'?`<button class="btn sm dan" data-a="dd" data-id="${r.id}">Delete draft</button>`:''}</div>`;
+const det=r=>{const d=r.d;return r.type==='gen'?[['Branch',d.branch],['Generator ID',d.asset],['Date',d.date],['Time',d.time],['Inspector',d.insp],['Make / model',d.model],['Serial number',d.serial],['Operating hours',d.hours],['Inspection type',d.itype]]:[['Branch',d.branch],['System / zone',d.zone],['Date',d.date],['Time',d.time],['Inspector',d.insp],['Alarm duration (inspector observation)',d.dur]]};
+const mkref=async t=>{const used=new Set((await all('inspections')).map(r=>r.ref));let r;do r=CFG[t].pre+'-'+today().replace(/-/g,'')+'-'+Math.random().toString(36).slice(2,6).toUpperCase();while(used.has(r));return r};
+/* ---------- NAV / ROUTER ---------- */
+const NAV=[['dash','Dashboard','home'],['gen','Generator','gen'],['alarm','Alarm','alarm'],['hist','History','hist'],['set','Settings','set']];
+$('#nav').innerHTML=NAV.map(n=>`<button data-a="nav" data-v="${n[0]}">${ic(n[2])}<span>${n[1]}</span></button>`).join('');
+const V={dash:vDash,gen:()=>vSec('gen'),alarm:()=>vSec('alarm'),hist:vHist,set:vSet,form:vForm,det:vDet};
+async function go(v,a){if(S.dirty){const k=await modal('Unsaved changes','You have unsaved inspection data. Save it as a draft, or discard it?',[['Stay','gho'],['Discard','dan'],['Save draft','pri']]);if(k<1)return;if(k===2){if(!await saveDraft())return}else await cleanup()}
+S.dirty=false;clearInterval(S.ti);S.t0=0;S.urls.forEach(URL.revokeObjectURL);S.urls=[];if(v!=='form'&&S.cur){S.cur.ph.forEach(p=>URL.revokeObjectURL(p.url));S.cur=null}
+S.view=v;S.arg=a;const cur=v==='form'?S.cur.rec.type:v;$$('#nav button').forEach(b=>{const on=b.dataset.v===cur;b.classList.toggle('on',on);on?b.setAttribute('aria-current','page'):b.removeAttribute('aria-current')});
+main.innerHTML='<p class="mu">Loading…</p>';try{await V[v]();main.style.animation='none';main.offsetHeight;main.style.animation='';scrollTo(0,0)}catch(e){main.innerHTML=`<div class="card"><b>Something went wrong</b><p class="mu">${h(e.message)}</p></div>`}}
+async function cleanup(){const c=S.cur;if(c&&!(await get('inspections',c.rec.id)))await delPhotos(c.rec.id)}
+/* ---------- DASHBOARD ---------- */
+async function vDash(){const a=await all('inspections'),c=a.filter(r=>r.status==='completed'),n=t=>c.filter(r=>r.type===t).length;
+const td=c.filter(r=>new Date(r.submitted).toLocaleDateString('en-CA')===today()).length,fl=c.filter(r=>r.result==='Failed').reduce((s,r)=>s+r.faults,0);
+const rec=[...a].sort((x,y)=>(y.submitted||y.updated||'').localeCompare(x.submitted||x.updated||'')).slice(0,6);
+main.innerHTML=`<h1>Dashboard</h1><div class="g">${[['Generator inspections',n('gen')],['Alarm inspections',n('alarm')],['Completed today',td],['Outstanding faults',fl,1]].map(s=>`<div class="card stat${s[2]?' r':''}"><b>${s[1]}</b><span>${s[0]}</span></div>`).join('')}</div>
+<div class="g"><button class="btn pri" data-a="nav" data-v="gen">${ic('gen')} Generator Testing</button><button class="btn pri" data-a="nav" data-v="alarm">${ic('alarm')} Alarm Testing</button></div>
+<div class="card" id="ibn" style="margin-top:12px" ${matchMedia('(display-mode:standalone)').matches?'hidden':''}><b>Install this app</b><p class="mu">Add Supreme Finance Inspections to your home screen for full-screen, offline-ready use.</p><button class="btn pri sm" data-a="inst">${ic('dl')} Install App</button></div>
+<h2>Recent inspection activity</h2>${rec.length?rec.map(row).join(''):'<div class="card mu">No inspections yet. Start a generator or alarm inspection to see activity here.</div>'}`}
+async function vSec(t){const T=CFG[t],dr=(await all('inspections')).filter(r=>r.type===t&&r.status==='draft').sort((a,b)=>(b.updated||'').localeCompare(a.updated||''));
+main.innerHTML=`<h1>${T.name}</h1><div class="card"><p>${t==='gen'?'Complete a structured generator inspection with photographic evidence.':'Record an alarm test, the observed ring duration and the OB CODE.'}</p><button class="btn pri" data-a="newf" data-t="${t}">${ic('plus')} Start new inspection</button></div><h2>Saved drafts</h2>${dr.length?dr.map(row).join(''):'<div class="card mu">No drafts. Drafts you save appear here so you can resume them.</div>'}`}
+/* ---------- FORM ---------- */
+const fld=(k,l,t,q,v)=>`<div><label for="f-${k}">${l}${q?' <span class="rq" aria-hidden="true">*</span>':''}</label>${t==='sel'?`<select class="in" id="f-${k}" data-f="${k}">${ITYPES.map(o=>`<option${o===v?' selected':''}>${o}</option>`).join('')}</select>`:`<input class="in" id="f-${k}" data-f="${k}" type="${t}" ${t==='number'?'inputmode="decimal" min="0" ':''}value="${h(v)}" autocomplete="off"${q?' required':''}>`}<small class="er" id="e-${k}"></small></div>`;
+async function openForm(t,id){let rec,ph=[];if(id){rec=await get('inspections',id);ph=(await photosOf(id)).map(p=>({...p,url:URL.createObjectURL(p.blob)}))}else rec={id:uid(),type:t,status:'draft',created:new Date().toISOString(),d:{date:today(),time:nowT(),itype:'Routine'},items:{}};S.cur={rec,ph};go('form')}
+async function vForm(){const {rec}=S.cur,T=CFG[rec.type],d=rec.d,al=rec.type==='alarm';
+main.innerHTML=`<button class="btn sm" data-a="back">${ic('back')} Back</button><h1 style="margin-top:12px">${T.name}</h1>
+<div class="note">${al?'The OB CODE is confidential operational information. Enter it only after the alarm test; never guess it. The timer records your own observation and is not an official monitoring measurement.':'<b>Safety first.</b> Follow company procedures and manufacturer guidance. Do not open live electrical panels or touch hot, moving or energised equipment unless you are qualified and authorised.'}</div>
+<div class="card g">${FL[rec.type].map(f=>fld(f[0],f[1],f[2],f[3],d[f[0]])).join('')}${al?`<div><label for="f-dur">How long did the alarm ring? <span class="rq">*</span></label><input class="in" id="f-dur" data-f="dur" inputmode="numeric" placeholder="MM:SS" maxlength="6" value="${h(d.dur)}" autocomplete="off"><small class="er" id="e-dur"></small></div>`:''}</div>
+${al?`<div class="card"><b>Alarm timer (optional)</b><div class="tm" id="tm">00:00</div><div class="g"><button class="btn" data-a="t0">Start alarm test</button><button class="btn" data-a="t1">Audible alarm stopped</button></div><p class="mu">You may correct the duration manually above.</p></div>`:''}
+<h2>Checklist <span class="mu" id="prg"></span></h2>
+${T.items.map((n,i)=>{const x=rec.items[i]||{};return`<div class="card it${x.s==='F'?' f':''}" id="it-${i}"><b>${i+1}. ${h(n)}</b><div class="sg" role="group" aria-label="Status for item ${i+1}">${[['P','Pass'],['F','Fail'],['N','N/A']].map(([k,l])=>`<button type="button" data-a="st" data-i="${i}" data-s="${k}" class="${x.s===k?'on':''}" aria-pressed="${x.s===k}">${l}</button>`).join('')}</div><textarea class="in" data-c="${i}" rows="2" aria-label="Comment for item ${i+1}" placeholder="Comment (required if Fail)">${h(x.c)}</textarea><small class="er" id="ei-${i}"></small><div style="margin-top:8px"><label class="btn sm" style="margin:0">${ic('cam',16)} Add photo<input class="vh" type="file" accept="image/*" multiple data-p="${i}"></label> <span class="mu" id="pc-${i}"></span></div><div class="th" id="th-${i}"></div></div>`}).join('')}
+<div class="card"><b>${al?'Comments after testing':'General comments'}</b>${al?' <span class="rq">*</span>':''}<textarea class="in" id="f-gc" data-f="gc" rows="3" aria-label="Comments">${h(d.gc)}</textarea><small class="er" id="e-gc"></small>
+<div style="margin-top:10px"><label class="btn sm" style="margin:0">${ic('cam',16)} Add general photograph<input class="vh" type="file" accept="image/*" multiple data-p="g"></label> <span class="mu" id="pc-g"></span></div><div class="th" id="th-g"></div></div>
+<div class="g"><button class="btn" data-a="save">Save draft</button><button class="btn pri" data-a="review">${ic('ck')} Review &amp; submit</button></div>`;
+['g',...T.items.keys()].forEach(k=>thumbs(String(k)));updProg()}
+const thumbs=k=>{const l=S.cur.ph.filter(p=>p.item===k);$('#th-'+k).innerHTML=l.map(p=>`<div><img src="${p.url}" alt="Attached photo" data-a="pv" data-u="${p.url}"><button type="button" aria-label="Remove photo" data-a="rm" data-id="${p.id}">×</button></div>`).join('');$('#pc-'+k).textContent=l.length?l.length+' photo'+(l.length>1?'s':''):''};
+const updProg=()=>{const T=CFG[S.cur.rec.type],n=T.items.filter((_,i)=>S.cur.rec.items[i]?.s).length;$('#prg').textContent=`(${n} of ${T.items.length} answered)`};
+async function shrink(f){if(!f.type.startsWith('image/'))throw new Error('not an image file');const bm=await createImageBitmap(f,{imageOrientation:'from-image'}),s=Math.min(1,1800/Math.max(bm.width,bm.height)),c=document.createElement('canvas');c.width=Math.round(bm.width*s);c.height=Math.round(bm.height*s);c.getContext('2d').drawImage(bm,0,0,c.width,c.height);bm.close&&bm.close();return new Promise((r,j)=>c.toBlob(b=>b?r(b):j(new Error('compression failed')),'image/jpeg',.85))}
+async function addPhotos(k,files){$('#pc-'+k).textContent='Processing…';for(const f of files){try{const blob=await shrink(f),p={id:uid(),insp:S.cur.rec.id,item:k,blob,t:Date.now()};await put('photos',p);p.url=URL.createObjectURL(blob);S.cur.ph.push(p);S.dirty=true}catch(e){toast('Could not store "'+f.name+'": '+(e.message||e),'err')}}thumbs(k)}
+async function saveDraft(){const {rec,ph}=S.cur;rec.status='draft';rec.pc=ph.length;rec.updated=new Date().toISOString();try{await put('inspections',rec);S.dirty=false;toast('Draft saved');return true}catch(e){toast('Save failed: '+e.message,'err');return false}}
+function check(){const {rec,ph}=S.cur,T=CFG[rec.type],d=rec.d,E=[];$$('.er').forEach(e=>e.textContent='');$$('.in.err').forEach(e=>e.classList.remove('err'));
+const bad=(k,m)=>{$('#e-'+k).textContent=m;$('#f-'+k).classList.add('err');E.push(m)};
+FL[rec.type].forEach(f=>{if(f[3]&&!String(d[f[0]]||'').trim())bad(f[0],f[1]+' is required')});
+if(rec.type==='alarm'){if(!/^\d{1,3}:[0-5]\d$/.test(d.dur||''))bad('dur','Enter the ring duration as MM:SS');if(!(d.gc||'').trim())bad('gc','Comments after testing are required')}
+T.items.forEach((n,i)=>{const x=rec.items[i]||{};let m='';if(!x.s)m='Select Pass, Fail or N/A';else if(x.s==='F'&&!(x.c||'').trim())m='Explain why this item failed';else if(rec.type==='alarm'&&i===OBI&&x.s==='P'&&!(d.ob||'').trim())m='OB CODE cannot be marked verified before it is received';if(m){$('#ei-'+i).textContent=m;E.push(`Item ${i+1}: ${m}`)}});
+if(!ph.length)E.push('Attach at least one photograph');return E}
+async function submit(){if(S.busy)return;S.busy=1;const {rec,ph}=S.cur;try{rec.ref=await mkref(rec.type);rec.status='completed';rec.submitted=new Date().toISOString();rec.pc=ph.length;calc(rec);await put('inspections',rec);S.dirty=false;
+const k=await modal('Inspection submitted',`<div class="okc">${ic('ck',40)}</div><p style="text-align:center">Reference <b>${h(rec.ref)}</b><br>${bd(rec)}</p>`,[['Dashboard',''],['View record','pri']]);k===1?go('det',rec.id):go('dash')}
+catch(e){rec.status='draft';delete rec.ref;toast('Could not save: '+e.message,'err')}finally{S.busy=0}}
+/* ---------- DETAIL ---------- */
+async function vDet(){const r=await get('inspections',S.arg);if(!r)throw new Error('Record not found');const ph=S.ph=(await photosOf(r.id)).sort((a,b)=>String(a.item).localeCompare(String(b.item),undefined,{numeric:true})).map(p=>{const u=URL.createObjectURL(p.blob);S.urls.push(u);return{...p,url:u}});S.rec=r;const T=CFG[r.type],al=r.type==='alarm';
+main.innerHTML=`<button class="btn sm" data-a="nav" data-v="hist">${ic('back')} Back to history</button><h1 style="margin-top:12px">${h(r.ref)} ${bd(r)}</h1><p class="mu">${T.name} · read-only completed record · submitted ${h(fmt(r.submitted))}</p>
+<div class="card g">${det(r).filter(x=>x[1]).map(([k,v])=>`<div><span class="mu">${k}</span><br><b>${h(v)}</b></div>`).join('')}${al?`<div><span class="mu">OB CODE (confidential)</span><br><b id="obv">${r.d.ob?'••••••':'Not received'}</b> ${r.d.ob?`<button class="btn sm" data-a="obs">${ic('eye',16)} Show</button>`:`<button class="btn sm pri" data-a="addob">Add OB CODE</button>`}</div>`:''}</div>
+<div class="card"><b>Actions</b>${al?`<p><label style="font-weight:400"><input type="checkbox" id="conf"> Include confidential OB CODE in PDF / print report</label></p>`:''}<div class="g"><button class="btn" data-a="pvrep">${ic('eye')} Preview report</button><button class="btn pri" data-a="pdf">${ic('dl')} Download A4 PDF</button><button class="btn" data-a="print">${ic('pt')} Print report</button><button class="btn" data-a="png">${ic('img')} Download Checklist as Image</button></div><p class="mu">PDF uses your browser's print engine: choose “Save as PDF” in the print dialog (A4 layout pre-set).</p></div>
+<h2>Checklist</h2>${T.items.map((n,i)=>{const x=r.items[i]||{};return`<div class="card${x.s==='F'?' it f':''}"><b>${i+1}. ${h(n)}</b> <span class="badge ${x.s==='P'?'Passed':x.s==='F'?'Failed':'Draft'}">${{P:'Pass',F:'Fail',N:'N/A'}[x.s]||'—'}</span>${x.c?`<p>${h(x.c)}</p>`:''}</div>`}).join('')}
+<h2>${al?'Comments after testing':'General comments'}</h2><div class="card">${h(r.d.gc||'None')}</div>
+<h2>Photographs (${ph.length})</h2><div class="card th">${ph.map(p=>`<div><img src="${p.url}" alt="Photo" data-a="pv" data-u="${p.url}"></div>`).join('')||'<span class="mu">No photographs.</span>'}</div>
+${(r.amend||[]).length?`<h2>Amendments</h2>${r.amend.map(a=>`<div class="card">${h(fmt(a.at))} — ${h(a.note)}</div>`).join('')}`:''}
+<div class="card"><button class="btn dan" data-a="delc">Delete this completed record…</button></div>`}
+function repHTML(r,ph,conf){const T=CFG[r.type],d=r.d,F=T.items.map((n,i)=>[n,r.items[i]||{}]).filter(x=>x[1].s==='F');
+return`<div class="hdr"><img src="${LOGO}" alt="Supreme Finance"><div style="text-align:right"><h1>${T.name} Report</h1>Ref: <b>${h(r.ref)}</b></div></div>
+<h2>Inspection details</h2><table>${det(r).filter(x=>x[1]).map(([k,v])=>`<tr><th style="width:38%">${k}</th><td>${h(v)}</td></tr>`).join('')}<tr><th>Submitted</th><td>${h(fmt(r.submitted))}</td></tr></table>
+<h2>Result: <span class="${r.result==='Passed'?'sP':'sF'}">${r.result.toUpperCase()}</span> — ${r.faults} fault(s)</h2>
+${conf&&r.type==='alarm'?`<h2>Confidential — OB CODE</h2><table><tr><th style="width:38%">OB CODE</th><td>${h(d.ob||'Not received')}</td></tr></table><p><i>Confidential operational information. Do not distribute.</i></p>`:''}
+<h2>Checklist results</h2><table><tr><th>#</th><th>Item</th><th>Status</th><th>Comments</th></tr>${T.items.map((n,i)=>{const x=r.items[i]||{};return`<tr><td>${i+1}</td><td>${h(n)}</td><td class="s${x.s}">${{P:'Pass',F:'FAIL',N:'N/A'}[x.s]||'—'}</td><td>${h(x.c)}</td></tr>`}).join('')}</table>
+<h2>${r.type==='alarm'?'Comments after testing':'General comments'}</h2><p>${h(d.gc||'None')}</p>
+<h2>Outstanding faults and recommended actions</h2>${F.length?`<ul>${F.map(([n,x])=>`<li><b>${h(n)}</b>: ${h(x.c)} — <i>Refer to a qualified technician / maintenance for rectification and re-inspection.</i></li>`).join('')}</ul>`:'<p>No faults recorded.</p>'}${r.result==='Pending Verification'?'<p><b>OB CODE not yet received — outcome pending verification.</b></p>':''}
+${ph.length?`<h2>Photographic evidence</h2><div class="ph">${ph.map((p,i)=>`<figure><img src="${p.url}" alt=""><figcaption>Photo ${i+1}: ${p.item==='g'?'General photograph':h((+p.item+1)+'. '+T.items[p.item])}</figcaption></figure>`).join('')}</div>`:''}
+<div class="ft">Generated ${h(fmt(new Date()))} · Supreme Finance Generator &amp; Alarm Inspection System · Developed by Melato Tatu</div>`}
+const conf=()=>!!$('#conf')?.checked;
+act.pvrep=()=>modal('Report preview','<div class="rp" style="padding:14px">'+repHTML(S.rec,S.ph,conf())+'</div>');
+act.print=async()=>{const p=$('#pr'),t=document.title;p.innerHTML='<div class="rp">'+repHTML(S.rec,S.ph,conf())+'</div>';toast('Preparing report…');
+await Promise.all($$('img',p).map(i=>i.decode().catch(()=>{})));document.title=CFG[S.rec.type].name.replace(/ /g,'-')+'_'+S.rec.ref;
+const done=()=>{document.title=t;p.innerHTML='';removeEventListener('afterprint',done)};addEventListener('afterprint',done);try{print()}catch(e){done();toast('Print failed: '+e.message,'err')}};
+act.pdf=act.print;
+act.obs=b=>{$('#obv').textContent=S.rec.d.ob;b.remove();setTimeout(()=>{const e=$('#obv');e&&(e.textContent='••••••')},15000)};
+act.addob=async()=>{const k=await modal('Add OB CODE','<label for="obin">OB CODE received after the alarm test</label><input class="in" id="obin" autocomplete="off">',[['Cancel',''],['Save','pri']]),v=modal.el.querySelector('#obin').value.trim();if(k!==1)return;if(!v)return toast('Enter the OB CODE','err');
+const r=S.rec;r.d.ob=v;(r.amend=r.amend||[]).push({at:new Date().toISOString(),note:'OB CODE added after submission (value withheld from log)'});calc(r);try{await put('inspections',r);toast('OB CODE saved');go('det',r.id)}catch(e){toast('Save failed: '+e.message,'err')}};
+act.delc=async()=>{const r=S.rec,k=await modal('Delete completed record',`<p>This permanently deletes completed record <b>${h(r.ref)}</b> and its photographs. This cannot be undone. Type the reference to confirm.</p><input class="in" id="cf" autocomplete="off">`,[['Cancel',''],['Delete permanently','dan']]);if(k===1&&modal.el.querySelector('#cf').value.trim()===r.ref){await delPhotos(r.id);await rq(st('inspections','readwrite').delete(r.id));toast('Record deleted');go('hist')}else if(k===1)toast('Reference did not match; nothing deleted','err')};
+/* ---------- PNG EXPORT ---------- */
+async function mkPng(r,ph){const T=CFG[r.type],W=1240,P=60,A='Arial,sans-serif',logo=await new Promise((a,b)=>{const i=new Image();i.onload=()=>a(i);i.onerror=()=>b(new Error('logo failed to load'));i.src=LOGO}),bms=await Promise.all(ph.map(p=>createImageBitmap(p.blob)));
+const paint=(c,dr)=>{let y=0;c.textBaseline='top';
+const tx=(t,x,f,co)=>{c.font=f;c.fillStyle=co;if(dr)c.fillText(t,x,y)};
+const wr=(t,x,w,f,co,lh)=>{c.font=f;c.fillStyle=co;let l='';const o=[];for(const wd of String(t||'').split(/\s+/)){const n=l?l+' '+wd:wd;if(c.measureText(n).width>w&&l){o.push(l);l=wd}else l=n}o.push(l);if(dr)o.forEach((s,i)=>c.fillText(s,x,y+i*lh));return o.length*lh};
+if(dr){c.fillStyle='#d8232a';c.fillRect(0,0,W,16)}y=46;const lh=100,lw=logo.width*lh/logo.height;if(dr)c.drawImage(logo,P,y,lw,lh);
+tx(T.name+' Checklist',P+lw+40,'bold 38px '+A,'#111');y+=50;tx('Reference: '+r.ref,P+lw+40,'28px '+A,'#d8232a');y+=80;
+if(dr){c.fillStyle='#ddd';c.fillRect(P,y,W-2*P,2)}y+=24;
+const dt=det(r).filter(x=>x[1]),cw=(W-2*P)/2;for(let i=0;i<dt.length;i+=2){let m=0;[0,1].forEach(j=>{const e=dt[i+j];if(!e)return;const x=P+j*cw;tx(e[0],x,'20px '+A,'#666');y+=26;const hh=wr(e[1],x,cw-20,'bold 24px '+A,'#111',30);y-=26;m=Math.max(m,26+hh+14)});y+=m}
+y+=6;const ok=r.result==='Passed';if(dr){c.fillStyle=ok?'#16794a':'#d8232a';c.fillRect(P,y,W-2*P,76)}y+=18;tx('RESULT: '+r.result.toUpperCase()+'   |   Faults: '+r.faults,P+24,'bold 34px '+A,'#fff');y+=76;
+tx('Checklist results',P,'bold 30px '+A,'#111');y+=50;
+T.items.forEach((n,i)=>{const x=r.items[i]||{},xs=P+560+40,xc=P+730;const a=wr((i+1)+'. '+n,P,540,'22px '+A,'#111',28),b=wr(x.c||'',xc,W-P-xc,'20px '+A,'#444',26);
+tx({P:'PASS',F:'FAIL',N:'N/A'}[x.s]||'—',xs,'bold 22px '+A,x.s==='F'?'#d8232a':x.s==='P'?'#16794a':'#666');const rh=Math.max(a,b,28)+16;y+=rh;if(dr){c.fillStyle='#e5e5e5';c.fillRect(P,y-8,W-2*P,1)}});
+y+=20;tx(r.type==='alarm'?'Comments after testing':'General comments',P,'bold 30px '+A,'#111');y+=46;y+=wr(r.d.gc||'None',P,W-2*P,'22px '+A,'#222',30)+20;
+if(bms.length){tx('Photographs',P,'bold 30px '+A,'#111');y+=50;const bw=(W-2*P-30)/2;for(let i=0;i<bms.length;i+=2){let m=0;[0,1].forEach(j=>{const b=bms[i+j];if(!b)return;const s=Math.min(bw/b.width,420/b.height),dw=b.width*s,dh=b.height*s,x=P+j*(bw+30);if(dr){c.fillStyle='#f3f3f3';c.fillRect(x,y,bw,dh);c.drawImage(b,x+(bw-dw)/2,y,dw,dh)}const p=ph[i+j];const cap=p.item==='g'?'General photograph':(+p.item+1)+'. '+T.items[p.item];y+=dh+6;const ch=wr('Photo '+(i+j+1)+': '+cap,x,bw,'18px '+A,'#444',24);y-=dh+6;m=Math.max(m,dh+6+ch+22)});y+=m}}
+y+=10;tx('Generated '+fmt(new Date())+' · Supreme Finance Generator & Alarm Inspection System · Developed by Melato Tatu',P,'18px '+A,'#666');y+=30;return y+P/2};
+const H=Math.ceil(paint(document.createElement('canvas').getContext('2d'),false));if(H>30000)throw new Error('Too many photographs for a single image; use the PDF report');
+const cv=document.createElement('canvas');cv.width=W;cv.height=H;const c=cv.getContext('2d');c.fillStyle='#fff';c.fillRect(0,0,W,H);paint(c,true);bms.forEach(b=>b.close&&b.close());
+return new Promise((r,j)=>cv.toBlob(b=>b?r(b):j(new Error('image encoding failed')),'image/png'))}
+act.png=async b=>{b.disabled=true;toast('Generating image…');try{const bl=await mkPng(S.rec,S.ph),u=URL.createObjectURL(bl),k=await modal('Image preview',`<img class="big" src="${u}" alt="Checklist image preview">`,[['Close',''],['Download PNG','pri']]);
+if(k===1){dl(bl,(S.rec.type==='gen'?'generator':'alarm')+'-inspection_'+S.rec.ref+'.png');toast('Download started')}setTimeout(()=>URL.revokeObjectURL(u),9000)}catch(e){toast('Image export failed: '+e.message,'err')}finally{b.disabled=false}};
+/* ---------- HISTORY ---------- */
+async function vHist(){const a=S.all=await all('inspections'),f=S.f,o=k=>[...new Set(a.map(r=>r.d[k]).filter(Boolean))].sort().map(v=>`<option${f[k]===v?' selected':''}>${h(v)}</option>`).join('');
+const sel=(id,l,opts)=>`<div><label for="${id}">${l}</label><select class="in" id="${id}">${opts}</select></div>`;
+main.innerHTML=`<h1>Inspection History</h1><div class="card g" id="fb"><div><label for="q">Search reference, branch, inspector</label><input class="in" id="q" type="search" value="${h(f.q)}"></div>
+${sel('ty','Type',['','gen','alarm'].map(v=>`<option value="${v}"${f.ty===v?' selected':''}>${v?CFG[v].name:'All types'}</option>`).join(''))}
+${sel('rs','Status / result',['','draft','Passed','Failed','Pending Verification'].map(v=>`<option value="${v}"${f.rs===v?' selected':''}>${v||'All statuses'}</option>`).join(''))}
+${sel('br','Branch','<option value="">All branches</option>'+o('branch'))}${sel('ins','Inspector','<option value="">All inspectors</option>'+o('insp'))}
+<div><label for="d1">From date</label><input class="in" id="d1" type="date" value="${h(f.d1)}"></div><div><label for="d2">To date</label><input class="in" id="d2" type="date" value="${h(f.d2)}"></div>
+${sel('so','Sort',['new','old'].map(v=>`<option value="${v}"${f.so===v?' selected':''}>${v==='new'?'Newest first':'Oldest first'}</option>`).join(''))}</div><div id="hl"></div>`;hFilter()}
+function hFilter(){if(S.view!=='hist')return;const g=i=>$('#'+i).value,f=S.f={q:g('q'),ty:g('ty'),rs:g('rs'),br:g('br'),ins:g('ins'),d1:g('d1'),d2:g('d2'),so:g('so')};f.branch=f.br;f.insp=f.ins;const q=f.q.toLowerCase();
+const l=S.all.filter(r=>(!q||[r.ref,r.d.branch,r.d.insp].some(v=>String(v||'').toLowerCase().includes(q)))&&(!f.ty||r.type===f.ty)&&(!f.rs||(r.status==='draft'?'draft':r.result)===f.rs)&&(!f.br||r.d.branch===f.br)&&(!f.ins||r.d.insp===f.ins)&&(!f.d1||(r.d.date||'')>=f.d1)&&(!f.d2||(r.d.date||'')<=f.d2));
+l.sort((a,b)=>{const x=(a.d.date||'')+(a.d.time||''),y=(b.d.date||'')+(b.d.time||'');return f.so==='old'?x.localeCompare(y):y.localeCompare(x)});
+$('#hl').innerHTML=l.length?`<p class="mu">${l.length} record(s)</p>`+l.map(row).join(''):'<div class="card mu">No inspections match these filters.</div>'}
+/* ---------- SETTINGS / DATA / ABOUT ---------- */
+async function vSet(){const a=await all('inspections'),np=await rq(st('photos').count()),n=(t)=>a.filter(r=>r.type===t&&r.status==='completed').length;let est='unavailable';try{const e=await navigator.storage.estimate();est=(e.usage/1048576).toFixed(1)+' MB used of ~'+Math.round(e.quota/1048576)+' MB available'}catch(e){}
+main.innerHTML=`<h1>Settings</h1><div class="card"><b>Install app</b><p class="mu">Install for a full-screen experience.</p><button class="btn pri" data-a="inst">${ic('dl')} Install App</button></div>
+<div class="card"><b>Data management</b><div class="g" style="margin:10px 0"><div><b>${n('gen')}</b><br><span class="mu">Generator inspections</span></div><div><b>${n('alarm')}</b><br><span class="mu">Alarm inspections</span></div><div><b>${a.filter(r=>r.status==='draft').length}</b><br><span class="mu">Drafts</span></div><div><b>${np}</b><br><span class="mu">Stored photographs</span></div></div><p class="mu">Storage: ${h(est)}</p>
+<div class="g"><button class="btn" data-a="exp">${ic('dl')} Export JSON backup</button><label class="btn">Import backup<input class="vh" type="file" accept="application/json,.json" id="imp"></label></div>
+<div class="note" style="margin-top:12px">Backups include photographs and confidential OB CODEs. Store them securely. Delete drafts from History; deleting completed records is done on the record itself.</div></div>
+<div class="card"><b>Important limitations</b><ul><li>Data is stored <b>on this device and browser only</b> (IndexedDB). It does <b>not</b> synchronise between devices.</li><li>Clearing browser data, resetting the device or storage eviction can permanently delete records. Export backups regularly.</li><li>Local browser storage is not server-grade security. A production deployment needs authentication, authorisation, secure synchronisation, backups and company approval.</li></ul></div>
+<div class="card"><b>About</b><p>Supreme Finance Generator &amp; Alarm Inspection System.</p><button class="btn" data-a="dev">View developer credits</button> <button class="btn" data-a="replay">Replay introduction</button><p class="mu" style="margin-bottom:0">Developed by Melato Tatu</p></div>`}
+const b2d=b=>new Promise((r,j)=>{const f=new FileReader();f.onload=()=>r(f.result);f.onerror=()=>j(f.error);f.readAsDataURL(b)});
+act.exp=async b=>{b.disabled=true;try{const ins=await all('inspections'),ps=await all('photos'),out={app:'supreme-finance',v:1,at:new Date().toISOString(),inspections:ins,photos:await Promise.all(ps.map(async p=>({id:p.id,insp:p.insp,item:p.item,data:await b2d(p.blob)})))};dl(new Blob([JSON.stringify(out)],{type:'application/json'}),'supreme-finance-backup-'+today()+'.json');toast('Backup download started')}catch(e){toast('Export failed: '+e.message,'err')}finally{b.disabled=false}};
+async function imp(file){try{const j=JSON.parse(await file.text());if(j.app!=='supreme-finance'||!Array.isArray(j.inspections)||!Array.isArray(j.photos))throw new Error('Not a Supreme Finance backup');
+const ok=r=>r&&typeof r.id==='string'&&CFG[r.type]&&['draft','completed'].includes(r.status)&&r.d&&typeof r.d==='object'&&r.items&&typeof r.items==='object';if(!j.inspections.every(ok))throw new Error('Backup contains invalid inspection records');
+if(!j.photos.every(p=>p&&typeof p.id==='string'&&typeof p.insp==='string'&&/^data:image\//.test(p.data)))throw new Error('Backup contains invalid photographs');
+const ex=new Set((await all('inspections')).map(r=>r.id)),nw=j.inspections.filter(r=>!ex.has(r.id)),cf=j.inspections.length-nw.length;
+const k=await modal('Restore backup',`<p>${nw.length} new record(s) will be imported.</p><p>${cf} record(s) already exist on this device and will be <b>skipped</b> — existing records are never overwritten.</p>`,[['Cancel',''],['Import','pri']]);if(k!==1)return;
+const ids=new Set(nw.map(r=>r.id));for(const r of nw)await put('inspections',r);let np=0;for(const p of j.photos)if(ids.has(p.insp)){await put('photos',{id:p.id,insp:p.insp,item:p.item,blob:await (await fetch(p.data)).blob(),t:Date.now()});np++}
+toast(`Imported ${nw.length} record(s) and ${np} photo(s)`);go('set')}catch(e){toast('Import failed: '+e.message,'err')}}
+/* ---------- ACTIONS ---------- */
+act.nav=b=>go(b.dataset.v);act.back=()=>go(S.cur?S.cur.rec.type:'dash');act.newf=b=>openForm(b.dataset.t);act.res=async b=>{const r=await get('inspections',b.dataset.id);openForm(r.type,r.id)};act.open=b=>go('det',b.dataset.id);
+act.dd=async b=>{const k=await modal('Delete draft','Delete this draft and its photographs? This cannot be undone.',[['Cancel',''],['Delete draft','dan']]);if(k===1){await delPhotos(b.dataset.id);await rq(st('inspections','readwrite').delete(b.dataset.id));toast('Draft deleted');go(S.view)}};
+act.st=b=>{const i=b.dataset.i,x=S.cur.rec.items[i]??={s:'',c:''};x.s=b.dataset.s;S.dirty=true;$$(`[data-a=st][data-i="${i}"]`).forEach(e=>{const on=e===b;e.classList.toggle('on',on);e.setAttribute('aria-pressed',on)});$('#it-'+i).classList.toggle('f',x.s==='F');updProg()};
+act.pv=b=>modal('Photograph',`<img class="big" src="${b.dataset.u}" alt="Full size photograph">`);
+act.rm=async b=>{const k=await modal('Remove photograph','Remove this photograph from the inspection?',[['Cancel',''],['Remove','dan']]);if(k!==1)return;const p=S.cur.ph.find(x=>x.id===b.dataset.id);await rq(st('photos','readwrite').delete(p.id));URL.revokeObjectURL(p.url);S.cur.ph=S.cur.ph.filter(x=>x!==p);S.dirty=true;thumbs(p.item)};
+act.save=()=>saveDraft();
+act.review=async()=>{const E=check();if(E.length){$('.in.err,.er:not(:empty)')?.scrollIntoView({block:'center',behavior:'smooth'});return modal('Please fix the following','<ul>'+E.map(e=>`<li>${h(e)}</li>`).join('')+'</ul>')}
+const {rec,ph}=S.cur,T=CFG[rec.type];calc(rec);const F=T.items.map((n,i)=>[n,rec.items[i]]).filter(x=>x[1].s==='F'),cnt=s=>Object.values(rec.items).filter(x=>x.s===s).length;
+const k=await modal('Review inspection',`<p>${h(rec.d.branch)} · ${h(rec.d.insp)} · ${h(rec.d.date)} ${h(rec.d.time)}</p><p>Pass ${cnt('P')} · Fail ${cnt('F')} · N/A ${cnt('N')} · ${ph.length} photo(s)${rec.type==='alarm'?' · ring '+h(rec.d.dur):''}</p><p>Outcome: ${bd(rec)}</p>${rec.type==='alarm'&&!(rec.d.ob||'').trim()?'<div class="note">No OB CODE entered. This will be recorded as <b>Pending Verification</b>, not verified.</div>':''}${F.length?'<b>Failed items</b><ul>'+F.map(([n,x])=>`<li>${h(n)} — ${h(x.c)}</li>`).join('')+'</ul>':''}`,[['Back to edit',''],['Submit inspection','pri']]);if(k===1)submit()};
+act.t0=b=>{S.t0=Date.now();clearInterval(S.ti);S.ti=setInterval(()=>{$('#tm').textContent=mmss((Date.now()-S.t0)/1000)},250);b.disabled=true;toast('Timer started')};
+act.t1=()=>{if(!S.t0)return toast('Start the alarm test first','err');clearInterval(S.ti);const v=mmss((Date.now()-S.t0)/1000);S.t0=0;$('#f-dur').value=v;S.cur.rec.d.dur=v;S.dirty=true;$('[data-a=t0]').disabled=false;toast('Duration recorded: '+v)};
+act.dev=()=>modal('Developer credit','<div class="dev">DEVELOPED BY MELATO TATU ©️©️</div>',[['Close','pri']]);
+act.thm=()=>{const n=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=n;try{localStorage.sf_theme=n}catch(e){}$('#thm').innerHTML=ic(n==='dark'?'sun':'moon')};
+act.replay=()=>intro(true);
+act.inst=async()=>{if(dp){dp.prompt();const c=await dp.userChoice;dp=null;if(c.outcome==='accepted')toast('Installing app…')}else modal('Install on your device','<p><b>Android Chrome:</b> menu ⋮ → Install app / Add to Home screen.<br><b>iPhone Safari:</b> Share → Add to Home Screen.<br><b>Desktop Chrome / Edge:</b> install icon in the address bar.</p><p class="mu">One-tap installation requires the app to be hosted over HTTPS (or localhost) with sw.js beside index.html. Opened straight from a file, browsers cannot install it.</p>')};
+document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(b&&act[b.dataset.a])act[b.dataset.a](b,e)});
+document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.matches('[role=button][data-a]'))e.target.click()});
+document.addEventListener('input',e=>{const t=e.target;if(S.view==='form'&&S.cur){if(t.dataset.f){S.cur.rec.d[t.dataset.f]=t.value;S.dirty=true}else if(t.dataset.c!=null){(S.cur.rec.items[t.dataset.c]??={s:'',c:''}).c=t.value;S.dirty=true}}if(t.closest('#fb'))hFilter()});
+document.addEventListener('change',e=>{const t=e.target;if(t.dataset.p!=null){addPhotos(t.dataset.p,[...t.files]);t.value=''}else if(t.id==='imp'){imp(t.files[0]);t.value=''}});
+addEventListener('beforeunload',e=>{if(S.dirty){e.preventDefault();e.returnValue=''}});
+/* ---------- INSTALL / PWA ---------- */
+const standalone=matchMedia('(display-mode:standalone)').matches||navigator.standalone;
+const setInst=()=>{const b=$('#inst');b.innerHTML=ic('dl',16)+' Install App';b.hidden=!!standalone};
+addEventListener('beforeinstallprompt',e=>{e.preventDefault();dp=e});
+addEventListener('appinstalled',()=>{dp=null;$('#inst').hidden=true;const n=$('#ibn');n&&(n.hidden=true);toast('App installed')});
+function pwa(){const img=new Image();img.onload=()=>{const mk=n=>{const c=document.createElement('canvas');c.width=c.height=n;const x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,n,n);const w=n*.8,hh=w*img.height/img.width;x.drawImage(img,n*.1,(n-hh)/2,w,hh);return c.toDataURL('image/png')};
+const i192=mk(192),i512=mk(512),m={name:'Supreme Finance Inspection System',short_name:'SF Inspect',start_url:location.href.split('#')[0],display:'standalone',background_color:'#ffffff',theme_color:'#d8232a',icons:[{src:i192,sizes:'192x192',type:'image/png'},{src:i512,sizes:'512x512',type:'image/png',purpose:'any'}]};
+const l=document.createElement('link');l.rel='manifest';l.href=URL.createObjectURL(new Blob([JSON.stringify(m)],{type:'application/manifest+json'}));document.head.append(l);const a=document.createElement('link');a.rel='apple-touch-icon';a.href=i192;document.head.append(a)};img.src=LOGO;
+if('serviceWorker'in navigator&&/^https?:/.test(location.protocol))navigator.serviceWorker.register('sw.js').catch(()=>{})}
+/* ---------- INTRO ---------- */
+function typeIn(el,t,d0,step){el.innerHTML='';[...t].forEach((c,i)=>{const s=document.createElement('span');s.className='ch';s.textContent=c;s.style.animationDelay=(d0+i*step)+'ms';el.append(s)})}
+function intro(replay){const el=$('#intro');el.style.display='grid';el.style.opacity=1;$('#app').hidden=!replay;const rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+typeIn($('#t1'),'SUPREME FINANCE',500,55);typeIn($('#t2'),'GENERATOR & ALARM INSPECTION SYSTEM',1400,25);typeIn($('#t3'),'Inspect. Record. Verify. Protect.',2300,35);
+const bar=$('#intro .pr i');bar.style.animation='none';bar.offsetHeight;bar.style.animation='';let done=false;
+const fin=()=>{if(done)return;done=true;try{localStorage.sf_intro=1}catch(e){}el.style.opacity=0;$('#app').hidden=false;setTimeout(()=>{el.style.display='none'},600);if(!replay)try{if(!localStorage.sf_dev){localStorage.sf_dev=1;setTimeout(act.dev,500)}}catch(e){}};
+$('#skip').onclick=fin;setTimeout(fin,rm?700:3700)}
+/* ---------- INIT ---------- */
+(async()=>{$$('img[data-logo]').forEach(i=>i.src=LOGO);$('#thm').innerHTML=ic(document.documentElement.dataset.theme==='dark'?'sun':'moon');setInst();pwa();
+let seen=false;try{seen=!!localStorage.sf_intro}catch(e){}
+if(seen){$('#intro').style.display='none';$('#app').hidden=false}else intro(false);
+try{db=await openDB();navigator.storage?.persist&&navigator.storage.persist();go('dash')}catch(e){$('#app').hidden=false;main.innerHTML=`<div class="card"><b>Storage unavailable</b><p>The local database could not be opened: ${h(e.message)}. Private browsing or restricted storage may be the cause.</p></div>`}})();
+})();
+</script></body></html>
